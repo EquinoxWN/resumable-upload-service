@@ -1,0 +1,23 @@
+{
+  "name": "resumable-upload-service",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Resumable uploads over the tus 1.0.0 protocol, streamed chunk by chunk into S3 multipart uploads.",
+  "type": "module",
+  "exports": "./dist/src/index.js",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "lint": "tsc -p tsconfig.json --noEmit",
+    "test": "npm run build && node --test --test-force-exit --test-concurrency=1 --test-timeout=60000 \"dist/test/*.test.js\"",
+    "bench": "npm run build && node dist/src/bench.js",
+    "e2e:s3": "npm run build && node dist/src/e2e.js",
+    "start": "npm run build && node dist/src/main.js"
+  },
+  "engines": {
+    "node": ">=24"
+  },
+  "devDependencies": {
+    "@types/node": "24.19.2",
+    "typescript": "7.0.2"
+  }
+}
